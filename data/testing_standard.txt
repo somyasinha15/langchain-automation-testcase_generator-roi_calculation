@@ -1,0 +1,125 @@
+###########################
+# QA TESTING STANDARDS
+###########################
+
+1. TEST CASE STRUCTURE
+----------------------
+- Test Case ID
+- Title
+- Description / Scenario
+- Preconditions
+- Steps / Actions
+- Test Data
+- Expected Result
+- Postconditions
+- Priority (High / Medium / Low)
+- Notes / Comments (optional)
+
+2. TEST DESIGN GUIDELINES
+-------------------------
+- Always include positive scenarios (valid input flows)
+- Always include negative scenarios (invalid input flows)
+- Include boundary value tests (min, max, empty, null)
+- Include edge cases
+- Include UI validations if applicable (labels, placeholders, mandatory fields)
+- Include functional, security, performance, and accessibility checks where relevant
+- Reuse existing templates or past test cases when possible
+- Follow project-specific naming conventions for Test Case IDs and Titles
+
+3. DOMAIN / PROJECT RULES
+-------------------------
+- Mandatory fields must be tested for empty, null, and invalid inputs
+- Drop-down or radio buttons must be tested for all valid and invalid options
+- Date fields should not accept future dates unless allowed
+- Login and authentication flows must include valid, invalid, and expired credentials
+- User permissions should be validated for different roles
+- File upload fields should be tested with allowed, disallowed file types and sizes
+- Error messages should be validated for correctness and clarity
+- Navigation flows should be tested for correct page redirection
+
+4. EXAMPLES OF TEST CASES
+-------------------------
+Example 1:
+{
+  "Test Case ID": "TC001",
+  "Title": "Login with valid credentials",
+  "Description": "Verify that a registered user can login successfully using valid credentials",
+  "Preconditions": "User must be registered",
+  "Steps": [
+    "Navigate to the login page",
+    "Enter valid username",
+    "Enter valid password",
+    "Click on the login button"
+  ],
+  "Test Data": {
+    "Username": "testuser",
+    "Password": "Test@123"
+  },
+  "Expected Result": "User is redirected to the dashboard",
+  "Priority": "High"
+}
+
+Example 2:
+{
+  "Test Case ID": "TC002",
+  "Title": "Login with invalid password",
+  "Description": "Verify that login fails when an incorrect password is entered",
+  "Preconditions": "User must be registered",
+  "Steps": [
+    "Navigate to the login page",
+    "Enter valid username",
+    "Enter invalid password",
+    "Click on the login button"
+  ],
+  "Test Data": {
+    "Username": "testuser",
+    "Password": "WrongPassword"
+  },
+  "Expected Result": "Error message 'Invalid credentials' is displayed",
+  "Priority": "High"
+}
+
+Example 3:
+{
+  "Test Case ID": "TC003",
+  "Title": "Mandatory field validation",
+  "Description": "Verify that mandatory fields cannot be left empty",
+  "Preconditions": "Form is accessible",
+  "Steps": [
+    "Navigate to the form page",
+    "Leave mandatory fields empty",
+    "Click on the submit button"
+  ],
+  "Expected Result": "Validation messages are displayed for all mandatory fields",
+  "Priority": "Medium"
+}
+
+5. JSON OUTPUT RULES FOR AI
+---------------------------
+- Always output test cases as a JSON array
+- Each test case should contain:
+  "Test Case ID", "Title", "Description", "Preconditions", "Steps", "Test Data" (if applicable), "Expected Result", "Priority"
+- Do not include markdown, code fences, or extra text
+- Example format:
+
+[
+  {
+    "Test Case ID": "TC001",
+    "Title": "...",
+    "Description": "...",
+    "Preconditions": "...",
+    "Steps": ["step1", "step2"],
+    "Test Data": {"field1": "value1"},
+    "Expected Result": "...",
+    "Priority": "High"
+  }
+]
+
+6. BEST PRACTICES
+-----------------
+- Keep steps clear, concise, and actionable
+- Avoid ambiguous wording
+- Always align test cases with requirements or user stories
+- Include edge cases wherever possible
+- Maintain consistent priority levels across all test cases
+- Reuse patterns from past test cases to save effort

@@ -1,0 +1,30 @@
+Test complexity guidelines:
+
+UI Simple:
+- Few fields
+- Minimal validations
+- Low execution effort
+- Junior QA skill
+
+UI Medium:
+- Multiple workflows
+- Validations
+- Moderate execution effort
+- Mid-level QA skill
+
+UI Complex:
+- Complex business logic
+- Integrations
+- High execution effort
+- Senior QA skill
+
+API:
+- Request/response validation
+- Auth, negative cases
+- Medium effort
+- Automation-friendly
+
+Cost logic (qualitative):
+- Higher skill → higher hourly cost
+- Higher complexity → higher maintenance
+- Automation saves cost over multiple cycles
