@@ -93,3 +93,14 @@ Includes ROI summary, decision matrix, and test cases.
 QA Managers, Automation Leads, Architects
 
 ---
+Output:
+<img width="900" height="348" alt="image" src="https://github.com/user-attachments/assets/4f74a3c9-222e-401c-ad37-89beda48961b" />
+
+<img width="665" height="330" alt="image" src="https://github.com/user-attachments/assets/bdda0975-295a-40eb-ab27-bee4a44d7c3b" />
+
+<img width="674" height="344" alt="image" src="https://github.com/user-attachments/assets/930c0293-864e-448d-b2c4-1f9be4106c9f" />
+
+<img width="671" height="367" alt="image" src="https://github.com/user-attachments/assets/1383b441-cf7e-4e8b-9674-8d76fbf2c771" />
+
+
+
