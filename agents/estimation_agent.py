@@ -1,9 +1,20 @@
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from langchain_community.document_loaders import TextLoader
 from utils.helpers import clean_json
 
-parser = StrOutputParser()
+# -----------------------------
+# Load QA standards
+# -----------------------------
+def load_txt(path):
+    loader = TextLoader(path, encoding="utf-8")
+    return loader.load()[0].page_content
 
+qa_standards = load_txt("data/qa_estimation_standards.txt")
+
+# -----------------------------
+# QA Prompt Template
+# -----------------------------
 qa_prompt = PromptTemplate(
     template="""
 You are a Principal QA Automation Architect.
@@ -31,10 +42,20 @@ Return STRICT JSON ONLY:
     input_variables=["qa_standards", "user_story"]
 )
 
-def generate_estimation(model, standards, story):
-    return clean_json(
-        (qa_prompt | model | parser).invoke({
-            "qa_standards": standards,
-            "user_story": story
-        })
-    )
+parser = StrOutputParser()
+
+# -----------------------------
+# Run Estimation Agent
+# -----------------------------
+def run_estimation(model, qa_standards, user_story):
+    """
+    Calls LangChain model to generate QA estimation for a user story.
+    Returns Python dict after cleaning AIMessage output.
+    """
+    raw_output = (qa_prompt | model | parser).invoke({
+        "qa_standards": qa_standards,
+        "user_story": user_story
+    })
+
+    estimation = clean_json(raw_output)
+    return estimation
